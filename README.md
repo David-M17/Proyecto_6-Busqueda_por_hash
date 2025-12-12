@@ -24,7 +24,7 @@ Implementamos y comparamos tres algoritmos de búsqueda para encontrar canciones
 
 ---
 
-### 🚀 Estructura del Código
+###  Estructura del Código
 El proyecto sigue una arquitectura limpia separada por paquetes:
 
 ```text
