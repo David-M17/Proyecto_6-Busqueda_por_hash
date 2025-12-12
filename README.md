@@ -1,6 +1,6 @@
-# 🎵 Motor de Búsqueda Musical - Proyecto de Estructura de Datos
+# Motor de Búsqueda Musical - Proyecto de Estructura de Datos
 
-### 📋 Descripción del Proyecto
+### Descripción del Proyecto
 Este proyecto fue desarrollado como parte de la evaluación del Tema 6: "Funciones Hash". Simula el backend de una **Plataforma de Streaming** que necesita optimizar sus tiempos de respuesta.
 
 **El Problema:**
@@ -14,13 +14,13 @@ Implementamos y comparamos tres algoritmos de búsqueda para encontrar canciones
 
 ---
 
-### 👥 Equipo de Desarrollo
+### Equipo de Desarrollo
 | Integrante | Rol | Tareas Principales |
 |------------|-----|--------------------|
-| **David Mastache** | 👑 Project Leader | Arquitectura, Modelo `Cancion`, Coordinación GitHub. |
-| **Issac Sánchez** | 💻 Developer | Lógica de algoritmos de búsqueda y pruebas de integridad. |
-| **Raúl** | ⚡ Developer | Implementación del `Main`, generación masiva de datos y métricas. |
-| **Alexia** | 📝 Analyst | Planteamiento del problema, documentación y análisis de resultados. |
+| **David Mastache** | Project Leader | Arquitectura, Modelo `Cancion`, Coordinación GitHub. |
+| **Issac Sánchez** | Developer | Lógica de algoritmos de búsqueda y pruebas de integridad. |
+| **Raúl** | Developer | Implementación del `Main`, generación masiva de datos y métricas. |
+| **Alexia** | Analyst | Planteamiento del problema, documentación y análisis de resultados. |
 
 ---
 
@@ -34,7 +34,6 @@ src/
 │                              Incluye @Override de hashCode() y equals().
 │
 ├── logica/
-│   ├── Ordenamiento.java  <-- Implementación de QuickSort adaptado para objetos.
 │   └── Busqueda.java      <-- Contiene los 3 métodos estáticos:
 │                              1. secuencial()
 │                              2. binaria()
