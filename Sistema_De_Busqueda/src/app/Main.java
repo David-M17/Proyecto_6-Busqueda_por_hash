@@ -9,7 +9,7 @@ import java.util.Map;
 import java.util.Random;
 import java.util.Scanner;
 import logica.Busqueda;
-// import logica.Ordenamiento;
+import logica.Ordenamiento;
 import modelo.Cancion;
 
 /**
@@ -167,4 +167,5 @@ public class Main {
         System.out.println("Programa finalizado.");
     }
 }
+
 
