@@ -1,9 +1,9 @@
-package modelo;
+package logica;
 
 /**
  *
  * @author David MD
  */
-public class Renam {
+public class Ordenamiento {
     
 }
