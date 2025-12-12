@@ -20,6 +20,9 @@ public class Cancion implements Comparable<Cancion> {
     private String genero;
 
     // Constructor
+    public Cancion() {
+    }
+    
     public Cancion(String isrc, String titulo, String artista, String album, int anioLanzamiento, String genero) {
         this.isrc = isrc;
         this.titulo = titulo;
@@ -29,16 +32,56 @@ public class Cancion implements Comparable<Cancion> {
         this.genero = genero;
     }
 
-    // Getters
-    public String getIsrc() { 
-        return isrc; 
+    // Getters & Setters
+
+    public String getIsrc() {
+        return isrc;
     }
-    public String getTitulo() { 
-        return titulo; 
+
+    public void setIsrc(String isrc) {
+        this.isrc = isrc;
     }
-    public String getArtista() { 
-        return artista; 
+
+    public String getTitulo() {
+        return titulo;
     }
+
+    public void setTitulo(String titulo) {
+        this.titulo = titulo;
+    }
+
+    public String getArtista() {
+        return artista;
+    }
+
+    public void setArtista(String artista) {
+        this.artista = artista;
+    }
+
+    public String getAlbum() {
+        return album;
+    }
+
+    public void setAlbum(String album) {
+        this.album = album;
+    }
+
+    public int getAnioLanzamiento() {
+        return anioLanzamiento;
+    }
+
+    public void setAnioLanzamiento(int anioLanzamiento) {
+        this.anioLanzamiento = anioLanzamiento;
+    }
+
+    public String getGenero() {
+        return genero;
+    }
+
+    public void setGenero(String genero) {
+        this.genero = genero;
+    }
+    
 
     // Implementación de Comparable para poder ordenar la lista
     @Override
