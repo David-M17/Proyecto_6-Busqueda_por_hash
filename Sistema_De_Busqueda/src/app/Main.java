@@ -48,12 +48,10 @@ public class Main {
         List<Cancion> listaCanciones = new ArrayList<>();
         Map<String, Cancion> mapaCanciones = new HashMap<>();
 
-        System.out.println("==================================================");
         System.out.println("   PROYECTO TEMA 6: MOTOR DE BUSQUEDA MUSICAL");
-        System.out.println("==================================================");
         
         // 1. GENERACIÓN DE DATOS 
-        System.out.println("\n[1] Generando " + CANTIDAD_CANCIONES + " canciones...");
+        System.out.println("\n> Generando " + CANTIDAD_CANCIONES + " canciones...");
         
         long inicioGen = System.currentTimeMillis();
         
@@ -120,7 +118,7 @@ public class Main {
             // MOSTRAR DATOS 
             if (resultado != null) {
                 System.out.println("\n---------------------------------");
-                System.out.println(" ♫  DETALLES DE LA CANCION  ♫");
+                System.out.println("   DETALLES DE LA CANCION   ");
                 System.out.println("---------------------------------");
                 System.out.println(" Titulo:   " + resultado.getTitulo());
                 System.out.println(" Artista:  " + resultado.getArtista());
@@ -137,7 +135,7 @@ public class Main {
                 System.out.println(" recorrio toda la lista sin exito.");
             }
             
-            System.out.print("\n¿Buscar otra? (si/no): ");
+            System.out.print("\nBuscar otra? (si/no): ");
             respuesta = scanner.next();
             respuesta = respuesta.toLowerCase();
         }
@@ -146,4 +144,5 @@ public class Main {
         scanner.close();
     }
 }
+
 
