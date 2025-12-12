@@ -21,7 +21,6 @@ import modelo.Cancion;
  */
 public class Main {
 
-    // BANCO DE DATOS MEZCLADO (INGLES / ESPAÑOL - SIN ACENTOS)
     private static final String[] SUJETOS = {
         "El Amor", "The Night", "El Sol", "My Heart", "El Silencio", 
         "The Life", "Un Sueno", "The Rhythm", "Mi Corazon", "The Party",
@@ -167,5 +166,6 @@ public class Main {
         System.out.println("Programa finalizado.");
     }
 }
+
 
 
