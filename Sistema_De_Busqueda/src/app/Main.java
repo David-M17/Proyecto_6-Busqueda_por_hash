@@ -53,7 +53,7 @@ public class Main {
         System.out.println("   PROYECTO TEMA 6: MOTOR DE BUSQUEDA MUSICAL");
         System.out.println("==================================================");
         
-        // 1. GENERACIÓN DE DATOS (Ya ordenados)
+        // 1. GENERACIÓN DE DATOS 
         System.out.println("\n[1] Generando " + CANTIDAD_CANCIONES + " canciones...");
         
         long inicioGen = System.currentTimeMillis();
