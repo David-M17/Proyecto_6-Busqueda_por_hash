@@ -111,6 +111,6 @@ public class Cancion implements Comparable<Cancion> {
 
     @Override
     public String toString() {
-        return "Cancion{" + "ISRC='" + isrc + '\'' + ", Titulo='" + titulo + '\'' + ", Artista:'" + artista + '}';
+        return "Cancion{" + "ISRC='" + isrc + '\'' + ", Titulo='" + titulo + '\'' + ", Artista: " + artista + '}';
     }
 }
