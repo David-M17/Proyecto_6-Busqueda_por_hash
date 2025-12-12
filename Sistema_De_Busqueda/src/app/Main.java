@@ -81,7 +81,7 @@ public class Main {
         
         long finGen = System.currentTimeMillis();
         System.out.println(" -> Datos generados y listos en: " + (finGen - inicioGen) + " ms.");
-        System.out.println(" -> (La lista ya esta ordenada por ISRC, omitimos QuickSort).");
+        System.out.println(" -> (La lista ya esta ordenada por ISRC).");
 
         // 2. MENÚ INTERACTIVO
         String respuesta = "s";
