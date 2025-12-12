@@ -5,8 +5,9 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import javax.swing.JOptionPane;
 import logica.Busqueda;
-import logica.Ordenamiento;
+// import logica.Ordenamiento;
 import modelo.Cancion;
 
 /**
@@ -36,7 +37,19 @@ public class Main {
             // Generamos un ISRC único, ejemplo: "MX-A01-0", "MX-A01-1"...
             String isrc = "MX-A01-" + i;
             String titulo = "Cancion " + i;
-            String artista = "Artista Generico " + (i % 100); // Solo 100 artistas repetidos
+            String artista = "Artista Desconocido";
+            if (i <= 1000) {
+                artista = "Taylor Swift";
+            }
+            if (i > 1000 && i <= 2000) {
+                artista = "Latin Mafia";
+            }
+            if (i > 2000 && i <= 3000) {
+                artista = "Milo J";
+            }
+            if (i > 3000 && i <= 4000) {
+                artista = "Imagine Dragons";
+            }
             
             // Creamos el objeto
             Cancion nuevaCancion = new Cancion(isrc, titulo, artista, "Album X", 2024, "Pop");
@@ -49,14 +62,15 @@ public class Main {
         System.out.println(" -> Datos generados en: " + (finGen - inicioGen) + " ms.");
 
         // Definimos qué vamos a buscar (El PEOR CASO: El último elemento)
-        String isrcBuscado = "MX-A01-" + (CANTIDAD_CANCIONES - 1);
-        System.out.println(" -> Objetivo a buscar (Peor Caso): " + isrcBuscado);
+        String dato = JOptionPane.showInputDialog("Introduzca el ultimo numero del isrc");
+        String isrcBuscado = "MX-A01-" + dato;
+        System.out.println(" -> Objetivo a buscar: " + isrcBuscado);
 
         
         // PREPARACIÓN PARA BÚSQUEDA BINARIA (ORDENAMIENTO)
         // La búsqueda binaria SOLO funciona si la lista está ordenada.
-        System.out.println("\n> Ordenando la lista para la Búsqueda Binaria...");
-        System.out.println("    (Usando QuickSort - Esto puede tardar un poco...)");
+        System.out.println("\n> Ordenando la lista para la Busqueda Binaria...");
+        // System.out.println("    (Usando QuickSort - Esto puede tardar un poco...)");
         
         long inicioSort = System.currentTimeMillis();
         
@@ -67,10 +81,9 @@ public class Main {
         long finSort = System.currentTimeMillis();
         System.out.println(" -> Lista ordenada en: " + (finSort - inicioSort) + " ms.");
         // System.out.println(" -> Comparaciones realizadas por QuickSort: " + Ordenamiento.comparaciones);
-
         
         // BÚSQUEDAS (Medición en Nanosegundos)
-        System.out.println("           COMPARACION DE VELOCIDAD          ");
+        System.out.println("\n           COMPARACION DE VELOCIDAD          ");
 
         // Búsqueda Secuencial (O(n))
         long t1 = System.nanoTime();
@@ -95,13 +108,16 @@ public class Main {
         long tiempoHash = t6 - t5;
         
         System.out.println("3. Busqueda Hash:       " + tiempoHash + " ns (" + resHash.getTitulo() + ")");
-
+        
         if (tiempoHash < tiempoSecuencial) {
             long vecesMasRapido = tiempoSecuencial / tiempoHash;
             System.out.println("Hash fue " + vecesMasRapido + " veces mas rapido que la Secuencial.");
         }
         
-        System.out.println("\nComplejidad Algorítmica demostrada:");
+        System.out.println("\n           CANCION ENCONTRADA          ");
+        System.out.println(resHash.toString());
+        
+        System.out.println("\nComplejidad Algoritmica demostrada:");
         System.out.println("- Secuencial: O(n) - Tuvo que recorrer todo.");
         System.out.println("- Binaria: O(log n) - Dividio la lista en mitades.");
         System.out.println("- Hash: O(1) - Acceso directo instantáneo.");
