@@ -1,13 +1,107 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
- */
 package app;
+
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
+import logica.Busqueda;
+import logica.Ordenamiento;
+import modelo.Cancion;
 
 /**
  *
+ * @author Alexia BG
  * @author David MD
+ * @author Issac SJ
+ * @author Raul NR
  */
 public class Main {
-    
+
+    public static void main(String[] args) {
+        
+        // CONFIGURACIÓN DE DATOS
+        int CANTIDAD_CANCIONES = 2000000; 
+        
+        List<Cancion> listaCanciones = new ArrayList<>();
+        Map<String, Cancion> mapaCanciones = new HashMap<>();
+
+        System.out.println("   PROYECTO TEMA 6: MOTOR DE BÚSQUEDA MUSICAL    ");
+        
+        // GENERACIÓN DE DATOS (Simulamos la base de datos de Spotify)
+        System.out.println("\n[1] Generando " + CANTIDAD_CANCIONES + " canciones aleatorias...");
+        
+        long inicioGen = System.currentTimeMillis();
+        for (int i = 0; i < CANTIDAD_CANCIONES; i++) {
+            // Generamos un ISRC único, ejemplo: "MX-A01-0", "MX-A01-1"...
+            String isrc = "MX-A01-" + i;
+            String titulo = "Cancion " + i;
+            String artista = "Artista Genérico " + (i % 100); // Solo 100 artistas repetidos
+            
+            // Creamos el objeto
+            Cancion nuevaCancion = new Cancion(isrc, titulo, artista, "Album X", 2024, "Pop");
+            
+            // Llenamos ambas estructuras
+            listaCanciones.add(nuevaCancion); // Para búsqueda Secuencial y Binaria
+            mapaCanciones.put(isrc, nuevaCancion); // Para búsqueda Hash
+        }
+        long finGen = System.currentTimeMillis();
+        System.out.println(" -> Datos generados en: " + (finGen - inicioGen) + " ms.");
+
+        // Definimos qué vamos a buscar (El PEOR CASO: El último elemento)
+        String isrcBuscado = "MX-A01-" + (CANTIDAD_CANCIONES - 1);
+        System.out.println(" -> Objetivo a buscar (Peor Caso): " + isrcBuscado);
+
+        
+        // PREPARACIÓN PARA BÚSQUEDA BINARIA (ORDENAMIENTO)
+        // La búsqueda binaria SOLO funciona si la lista está ordenada.
+        System.out.println("\n[2] Ordenando la lista para la Búsqueda Binaria...");
+        System.out.println("    (Usando QuickSort - Esto puede tardar un poco...)");
+        
+        long inicioSort = System.currentTimeMillis();
+        
+        // LLAMADA A TU ALGORITMO DE ORDENAMIENTO
+        Ordenamiento.quickSort(listaCanciones); 
+        
+        long finSort = System.currentTimeMillis();
+        System.out.println(" -> Lista ordenada en: " + (finSort - inicioSort) + " ms.");
+        System.out.println(" -> Comparaciones realizadas por QuickSort: " + Ordenamiento.comparaciones);
+
+        
+        // EL DUELO DE BÚSQUEDAS (Medición en Nanosegundos)
+        System.out.println("           COMPARACION DE VELOCIDAD          ");
+
+        // Búsqueda Secuencial (O(n))
+        long t1 = System.nanoTime();
+        Cancion resSec = Busqueda.secuencial(listaCanciones, isrcBuscado);
+        long t2 = System.nanoTime();
+        long tiempoSecuencial = t2 - t1;
+        
+        System.out.println("1. Búsqueda Secuencial: " + tiempoSecuencial + " ns (" + resSec.getTitulo() + ")");
+
+        // Búsqueda Binaria (O(log n))
+        long t3 = System.nanoTime();
+        Cancion resBin = Busqueda.binaria(listaCanciones, isrcBuscado);
+        long t4 = System.nanoTime();
+        long tiempoBinaria = t4 - t3;
+        
+        System.out.println("2. Búsqueda Binaria:    " + tiempoBinaria + " ns (" + resBin.getTitulo() + ")");
+
+        // Búsqueda Hash (O(1))
+        long t5 = System.nanoTime();
+        Cancion resHash = Busqueda.hash(mapaCanciones, isrcBuscado);
+        long t6 = System.nanoTime();
+        long tiempoHash = t6 - t5;
+        
+        System.out.println("3. Búsqueda Hash:       " + tiempoHash + " ns (" + resHash.getTitulo() + ")");
+
+        if (tiempoHash < tiempoSecuencial) {
+            long vecesMasRapido = tiempoSecuencial / tiempoHash;
+            System.out.println("¡INCREÍBLE! El Hash fue " + vecesMasRapido + " veces más rápido que la Secuencial.");
+        }
+        
+        System.out.println("\nComplejidad Algorítmica demostrada:");
+        System.out.println("- Secuencial: O(n) - Tuvo que recorrer todo.");
+        System.out.println("- Binaria: O(log n) - Dividió la lista en mitades.");
+        System.out.println("- Hash: O(1) - Acceso directo instantáneo.");
+    }
 }
