@@ -13,7 +13,7 @@ import java.util.Map;
  */
 public class Busqueda {
 
-    // --- 1. BÚSQUEDA SECUENCIAL (O(n)) ---
+    // BÚSQUEDA SECUENCIAL (O(n))
     public static Cancion secuencial(List<Cancion> lista, String isrcBuscado) {
         for (Cancion cancion : lista) {
             if (cancion.getIsrc().equals(isrcBuscado)) {
@@ -37,7 +37,7 @@ public class Busqueda {
             int resultado = cMedio.getIsrc().compareTo(isrcBuscado);
 
             if (resultado == 0) {
-                return cMedio; // ¡Encontrado!
+                return cMedio; // Encontrado
             }
             
             if (resultado < 0) {
