@@ -140,10 +140,10 @@ public class Main {
                 System.out.println(" ISRC:     " + resultado.getIsrc());
                 System.out.println("---------------------------------");
             } else {
-                System.out.println("\n[!] Error extraño: No se encontró la canción.");
+                System.out.println("\ Error extraño: No se encontró la canción.");
             }
             
-            System.out.print("\n¿Buscar otra? (si/no): ");
+            System.out.print("\nBuscar otra? (si/no): ");
             respuesta = scanner.next();
             respuesta = respuesta.toLowerCase();
         }
@@ -152,3 +152,4 @@ public class Main {
         scanner.close();
     }
 }
+
