@@ -1,5 +1,6 @@
 package app;
 
+import java.util.Collections;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -25,17 +26,17 @@ public class Main {
         List<Cancion> listaCanciones = new ArrayList<>();
         Map<String, Cancion> mapaCanciones = new HashMap<>();
 
-        System.out.println("   PROYECTO TEMA 6: MOTOR DE BÚSQUEDA MUSICAL    ");
+        System.out.println("   PROYECTO TEMA 6: MOTOR DE BUSQUEDA MUSICAL    ");
         
         // GENERACIÓN DE DATOS (Simulamos la base de datos de Spotify)
-        System.out.println("\n[1] Generando " + CANTIDAD_CANCIONES + " canciones aleatorias...");
+        System.out.println("\n> Generando " + CANTIDAD_CANCIONES + " canciones aleatorias...");
         
         long inicioGen = System.currentTimeMillis();
         for (int i = 0; i < CANTIDAD_CANCIONES; i++) {
             // Generamos un ISRC único, ejemplo: "MX-A01-0", "MX-A01-1"...
             String isrc = "MX-A01-" + i;
             String titulo = "Cancion " + i;
-            String artista = "Artista Genérico " + (i % 100); // Solo 100 artistas repetidos
+            String artista = "Artista Generico " + (i % 100); // Solo 100 artistas repetidos
             
             // Creamos el objeto
             Cancion nuevaCancion = new Cancion(isrc, titulo, artista, "Album X", 2024, "Pop");
@@ -54,20 +55,21 @@ public class Main {
         
         // PREPARACIÓN PARA BÚSQUEDA BINARIA (ORDENAMIENTO)
         // La búsqueda binaria SOLO funciona si la lista está ordenada.
-        System.out.println("\n[2] Ordenando la lista para la Búsqueda Binaria...");
+        System.out.println("\n> Ordenando la lista para la Búsqueda Binaria...");
         System.out.println("    (Usando QuickSort - Esto puede tardar un poco...)");
         
         long inicioSort = System.currentTimeMillis();
         
-        // LLAMADA A TU ALGORITMO DE ORDENAMIENTO
-        Ordenamiento.quickSort(listaCanciones); 
+        // LLAMADA AL ALGORITMO DE ORDENAMIENTO
+        // Ordenamiento.quickSort(listaCanciones);
+        java.util.Collections.sort(listaCanciones);
         
         long finSort = System.currentTimeMillis();
         System.out.println(" -> Lista ordenada en: " + (finSort - inicioSort) + " ms.");
-        System.out.println(" -> Comparaciones realizadas por QuickSort: " + Ordenamiento.comparaciones);
+        // System.out.println(" -> Comparaciones realizadas por QuickSort: " + Ordenamiento.comparaciones);
 
         
-        // EL DUELO DE BÚSQUEDAS (Medición en Nanosegundos)
+        // BÚSQUEDAS (Medición en Nanosegundos)
         System.out.println("           COMPARACION DE VELOCIDAD          ");
 
         // Búsqueda Secuencial (O(n))
@@ -76,7 +78,7 @@ public class Main {
         long t2 = System.nanoTime();
         long tiempoSecuencial = t2 - t1;
         
-        System.out.println("1. Búsqueda Secuencial: " + tiempoSecuencial + " ns (" + resSec.getTitulo() + ")");
+        System.out.println("1. Busqueda Secuencial: " + tiempoSecuencial + " ns (" + resSec.getTitulo() + ")");
 
         // Búsqueda Binaria (O(log n))
         long t3 = System.nanoTime();
@@ -84,7 +86,7 @@ public class Main {
         long t4 = System.nanoTime();
         long tiempoBinaria = t4 - t3;
         
-        System.out.println("2. Búsqueda Binaria:    " + tiempoBinaria + " ns (" + resBin.getTitulo() + ")");
+        System.out.println("2. Busqueda Binaria:    " + tiempoBinaria + " ns (" + resBin.getTitulo() + ")");
 
         // Búsqueda Hash (O(1))
         long t5 = System.nanoTime();
@@ -92,16 +94,16 @@ public class Main {
         long t6 = System.nanoTime();
         long tiempoHash = t6 - t5;
         
-        System.out.println("3. Búsqueda Hash:       " + tiempoHash + " ns (" + resHash.getTitulo() + ")");
+        System.out.println("3. Busqueda Hash:       " + tiempoHash + " ns (" + resHash.getTitulo() + ")");
 
         if (tiempoHash < tiempoSecuencial) {
             long vecesMasRapido = tiempoSecuencial / tiempoHash;
-            System.out.println("¡INCREÍBLE! El Hash fue " + vecesMasRapido + " veces más rápido que la Secuencial.");
+            System.out.println("Hash fue " + vecesMasRapido + " veces mas rapido que la Secuencial.");
         }
         
         System.out.println("\nComplejidad Algorítmica demostrada:");
         System.out.println("- Secuencial: O(n) - Tuvo que recorrer todo.");
-        System.out.println("- Binaria: O(log n) - Dividió la lista en mitades.");
+        System.out.println("- Binaria: O(log n) - Dividio la lista en mitades.");
         System.out.println("- Hash: O(1) - Acceso directo instantáneo.");
     }
 }
