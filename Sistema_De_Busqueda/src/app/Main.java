@@ -21,6 +21,8 @@ public class Main {
 
     public static void main(String[] args) {
         
+        boolean resp = true;
+        
         // CONFIGURACIÓN DE DATOS
         int CANTIDAD_CANCIONES = 2000000; 
         
@@ -58,14 +60,9 @@ public class Main {
             listaCanciones.add(nuevaCancion); // Para búsqueda Secuencial y Binaria
             mapaCanciones.put(isrc, nuevaCancion); // Para búsqueda Hash
         }
+        
         long finGen = System.currentTimeMillis();
         System.out.println(" -> Datos generados en: " + (finGen - inicioGen) + " ms.");
-
-        // Definimos qué vamos a buscar (El PEOR CASO: El último elemento)
-        String dato = JOptionPane.showInputDialog("Introduzca el ultimo numero del isrc");
-        String isrcBuscado = "MX-A01-" + dato;
-        System.out.println(" -> Objetivo a buscar: " + isrcBuscado);
-
         
         // PREPARACIÓN PARA BÚSQUEDA BINARIA (ORDENAMIENTO)
         // La búsqueda binaria SOLO funciona si la lista está ordenada.
@@ -77,6 +74,11 @@ public class Main {
         // LLAMADA AL ALGORITMO DE ORDENAMIENTO
         // Ordenamiento.quickSort(listaCanciones);
         java.util.Collections.sort(listaCanciones);
+        
+        do {
+        String dato = JOptionPane.showInputDialog("Introduzca el ultimo numero del isrc");
+        String isrcBuscado = "MX-A01-" + dato;
+        System.out.println(" -> Objetivo a buscar: " + isrcBuscado);
         
         long finSort = System.currentTimeMillis();
         System.out.println(" -> Lista ordenada en: " + (finSort - inicioSort) + " ms.");
@@ -117,9 +119,9 @@ public class Main {
         System.out.println("\n           CANCION ENCONTRADA          ");
         System.out.println(resHash.toString());
         
-        System.out.println("\nComplejidad Algoritmica demostrada:");
-        System.out.println("- Secuencial: O(n) - Tuvo que recorrer todo.");
-        System.out.println("- Binaria: O(log n) - Dividio la lista en mitades.");
-        System.out.println("- Hash: O(1) - Acceso directo instantáneo.");
+        int opc = JOptionPane.showConfirmDialog(null, "¿Desea buscar otra canción?");
+        if (opc == 1) resp = false;
+        
+        } while (resp);
     }
 }
