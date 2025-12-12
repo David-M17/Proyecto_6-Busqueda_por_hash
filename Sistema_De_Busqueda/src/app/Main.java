@@ -1,5 +1,6 @@
 package app;
 
+import java.util.Collections;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.HashMap;
@@ -8,7 +9,7 @@ import java.util.Map;
 import java.util.Random;
 import java.util.Scanner;
 import logica.Busqueda;
-import logica.Ordenamiento;
+// import logica.Ordenamiento;
 import modelo.Cancion;
 
 /**
