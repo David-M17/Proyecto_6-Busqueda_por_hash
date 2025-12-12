@@ -17,10 +17,10 @@ Implementamos y comparamos tres algoritmos de búsqueda para encontrar canciones
 ### Equipo de Desarrollo
 | Integrante | Rol | Tareas Principales |
 |------------|-----|--------------------|
-| **David Mastache** | Project Leader | Arquitectura, Modelo `Cancion`, Coordinación GitHub. |
-| **Issac Sánchez** | Developer | Lógica de algoritmos de búsqueda y pruebas de integridad. |
-| **Raúl** | Developer | Implementación del `Main`, generación masiva de datos y métricas. |
-| **Alexia** | Analyst | Planteamiento del problema, documentación y análisis de resultados. |
+| **David Mastache** | Lider | Arquitectura, Modelo `Cancion`, Coordinación GitHub. |
+| **Issac Sánchez** | Desarrollador | Lógica de algoritmos de búsqueda y pruebas de integridad. |
+| **Raúl** | Desarrollador | Implementación del `Main`, generación masiva de datos y métricas. |
+| **Alexia** | Desarrollador | Planteamiento del problema, documentación y análisis de resultados. |
 
 ---
 
