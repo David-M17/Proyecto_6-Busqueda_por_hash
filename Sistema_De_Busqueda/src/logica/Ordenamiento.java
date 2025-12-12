@@ -4,7 +4,10 @@ import java.util.List;
 
 /**
  *
+ * @author Alexia BG
  * @author David MD
+ * @author Issac SJ
+ * @author Raul NR
  */
 
 /**
