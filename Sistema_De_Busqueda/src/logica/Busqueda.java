@@ -7,6 +7,6 @@ package logica;
  * @author 
  * @author 
  */
-public class BusquedaBinaria {
+public class Busqueda {
     
 }
